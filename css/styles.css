@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap'); /* ! This should be at the top */
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+/*** TAG SELECTOR ***/
+body {
+  font-family: 'Kumbh Sans', sans-serif;
+  margin: 0;
+  height: 3000px;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 280px 75px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px 72px;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.505);
+}
+
+h5 {
+  color: hsl(26, 100%, 55%);
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-top: 12px;
+}
+
+strong {
+  font-size: 1.4rem;
+  margin-right: 15px;
+}
+
+span {
+  font-size: 0.812rem;
+  font-weight: bold;
+  color: hsl(26, 100%, 55%);
+  background-color: hsl(25, 100%, 94%);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+/*** CLASS SELECTOR ***/
+/* HEADER */
+.header-left-section, .header-right-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Header Left */
+.header-left-section {
+  width: 460px;
+}
+
+.sneakers-logo-container {
+  margin-right: 25px;
+}
+
+.sneakers-logo {
+  width: 110px;
+}
+
+.original-price {
+  color: lightgray;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  margin-top: 10px;
+  margin-bottom: 30px
+}
+
+.header-text-container { /* * Pwede nating gamitin tong code na eto kung mag-center tayo ng element or may kaparehas na klase ng style */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid transparent; /* optional */
+  height: 90px; /* optional */
+  color:hsl(219, 9%, 45%); 
+  font-size: 0.812rem;
+  transition: color 0.15s;
+}
+
+.header-text-container:hover {
+  cursor: pointer;
+  color: hsl(220, 13%, 13%);
+}
+
+.header-text-add-border {
+  border-bottom: 4px solid hsl(26, 100%, 55%);
+}
+
+/* Header right */
+.header-right-section {
+  width: 95px;
+}
+.icon-cart-header {
+  width: 18px;
+}
+
+.image-avatar {
+  width: 40px;
+}
+
+/* SECTION */
+/* Left section */
+.left-section {
+  width: fit-content;
+}
+
+.main-image-container {
+  width: fit-content; /* fit-content = the size of the container will be base on the size of the content */
+  height: fit-content;
+  margin-bottom: 20px;
+}
+
+.main-image {
+  width: 360px;
+  height: 360px;
+  border-radius: 12px;
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thumbnail-image-container {
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  transition: opacity 0.15s;
+}
+
+.thumbnail-image-container:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.thumbnail-image {
+  width: 70px;
+  height: 70px;
+  border-radius: inherit;
+}
+
+.add-border {
+  border: 2px solid hsl(26, 100%, 55%);
+}
+
+.add-opacity {
+  opacity: 0.2;
+}
+
+/* Right section */
+.right-section {
+  width: 400px;
+  font-size: 0.825rem;
+}
+
+.right-section-body-text {
+  color: hsl(219, 9%, 45%);
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+
+.price-off {
+  display: flex;
+  align-items: center;
+}
+/* * We can use this for future projects */
+.adding-to-cart-container {
+  display: flex;
+  align-items: center;
+}
+
+.increment-decrement-button-container {
+  display: flex;
+  margin-right: 15px;
+}
+
+.increment-decrement-button-container div {
+  box-sizing: border-box;
+  background-color: hsl(223, 64%, 98%);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.15s;
+}
+
+.decrement-button, .increment-button {
+  color:hsl(26, 100%, 55%);
+  font-size: 1.4rem;
+  padding-bottom: 4px;
+}
+
+.decrement-button {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.increment-button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.decrement-button:hover, .increment-button:hover {
+  cursor: pointer;
+  background-color: hsl(240, 3%, 94%);
+}
+
+.add-to-cart-button {
+  font-weight: bold;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 0.75rem;
+  color: white;
+  background-color:hsl(26, 100%, 55%);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 64px;
+  box-shadow: 0 8px 16px 0 hsla(26, 100%, 55%, 0.349);
+  transition: background-color 0.15s;
+}
+
+.add-to-cart-button:hover {
+  cursor: pointer;
+  background-color: hsl(26, 96%, 62%);
+}
+
+.button-cart-icon {
+  filter: invert(97%) sepia(100%) saturate(0%) hue-rotate(116deg) brightness(109%) contrast(100%);
+  width: 14px;
+  margin-right: 12px;
+}
+
+/* Lightbox Gallery */
+.lightbox-gallery {
+  background-color:hsla(0, 0%, 0%, 0.749);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.lightbox-content {
+  width: 450px;
+}
+
+.lightbox-close {
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+
+.close {
+  transition: color 0.15s;
+}
+
+.close:hover {
+  cursor: pointer;
+  color:hsl(26, 96%, 62%);
+}
+
+.lightbox-main-image-container {
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.lightbox-main-image {
+  width: 450px;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.lightbox-thumbnail-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 35px;
+}
+
+.lightbox-thumbnail-image-container {
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  transition: opacity 0.15s;
+}
+
+.lightbox-thumbnail-image-container:hover {
+
+}
+
+.lightbox-thumbnail-image:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.lightbox-thumbnail-image {
+  width: 70px;
+  height: 70px;
+  border-radius: inherit;
+}
+
+.next-button, .previous-button {
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 45%;
+}
+
+.next-button  {
+  right: -23px;
+}
+
+.previous-button {
+  left: -23px;
+}
+
+.next-button:hover, .previous-button:hover {
+  cursor: pointer;
+}
+
+.next-button:hover .icon, .previous-button:hover .icon {
+  border-color: hsl(26, 96%, 62%);
+}
+
+.icon {
+  width: 8px;
+  height: 8px;
+  border: 3px solid black;
+  transform: rotate(45deg);
+  transition: border-color 0.15s;
+}
+
+.next-button .icon {
+  border-bottom: none;
+  border-left: none;
+  margin-right: 4px;
+}
+
+.previous-button .icon {
+  border-top: none;
+  border-right: none;
+  margin-left: 4px;
+}
+
+.hidden {
+  display: none;
+}
+/*** ID SELECTOR ***/
+
