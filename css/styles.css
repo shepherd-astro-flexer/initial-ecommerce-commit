@@ -18,7 +18,7 @@ main {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 0 40px 72px;
+  margin: 0 60px 72px;
   border-bottom: 1px solid rgba(211, 211, 211, 0.505);
 }
 
@@ -94,20 +94,53 @@ span {
   color: hsl(220, 13%, 13%);
 }
 
-.header-text-add-border {
-  border-bottom: 4px solid hsl(26, 100%, 55%);
-}
-
 /* Header right */
 .header-right-section {
   width: 95px;
 }
+
 .icon-cart-header {
   width: 18px;
 }
 
+/* *Cart container styles */
+.icon-cart-container { /* ! Use as code snippet */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.cart-container {
+  background-color: white;
+  position: absolute;
+  top: 40px;
+  box-sizing: border-box;
+  width: 280px;
+  height: 205px;
+  border: 1px solid black;
+}
+
+.cart-text {
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 0.812rem;
+  width: inherit;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-left: 18px;
+}
+
+/* ! Continue styling cart 
+
+/* */
 .image-avatar {
   width: 40px;
+}
+
+.icon-cart-header, .image-avatar {
+  cursor: pointer
 }
 
 /* SECTION */
@@ -126,6 +159,10 @@ span {
   width: 360px;
   height: 360px;
   border-radius: 12px;
+}
+
+.main-image:hover {
+  cursor: pointer;
 }
 
 .thumbnail-container {
@@ -152,14 +189,6 @@ span {
   width: 70px;
   height: 70px;
   border-radius: inherit;
-}
-
-.add-border {
-  border: 2px solid hsl(26, 100%, 55%);
-}
-
-.add-opacity {
-  opacity: 0.2;
 }
 
 /* Right section */
@@ -247,7 +276,7 @@ span {
 }
 
 /* Lightbox Gallery */
-.lightbox-gallery {
+.lightbox-gallery { /* * We can use this code SNIPPET */
   background-color:hsla(0, 0%, 0%, 0.749);
   position: absolute;
   top: 0;
@@ -256,6 +285,7 @@ span {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .lightbox-content {
@@ -372,8 +402,22 @@ span {
   margin-left: 4px;
 }
 
+/* ! Classes to add goes here (Nasa dulo ng style para hindi sila mapatungan ng primary styles) */
 .hidden {
   display: none;
 }
+
+.header-text-add-border {
+  border-bottom: 4px solid hsl(26, 100%, 55%);
+}
+
+.add-border {
+  border: 2px solid hsl(26, 100%, 55%);
+}
+
+.add-opacity {
+  opacity: 0.2;
+}
+
 /*** ID SELECTOR ***/
 
