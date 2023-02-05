@@ -104,6 +104,7 @@ span {
 }
 
 /* *Cart container styles */
+/* ! TESTING */
 .icon-cart-container { /* ! Use as code snippet */
   display: flex;
   justify-content: center;
@@ -112,12 +113,13 @@ span {
 
 .cart-container {
   background-color: white;
+  border-radius: 6px;
   position: absolute;
   top: 40px;
   box-sizing: border-box;
-  width: 280px;
+  width: 290px;
   height: 205px;
-  border: 1px solid black;
+  box-shadow: 0 8px 16px 0 darkgray;
 }
 
 .cart-text {
@@ -125,16 +127,99 @@ span {
   font-weight: 700;
   font-size: 0.812rem;
   width: inherit;
-  height: 55px;
+  height: 25%;
   display: flex;
   align-items: center;
   border-bottom: 1px solid lightgray;
   padding-left: 18px;
 }
 
-/* ! Continue styling cart 
+.cart-body {
+  box-sizing: border-box;
+  width: inherit;
+  height: 75%;
+  
+  /* overflow-y: scroll;
+  white-space: nowrap; */
+}
+
+.cart-content-container {
+  width: inherit;
+  overflow: hidden;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
+.cart-content {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 50%;
+  width: inherit;
+  justify-content: space-between;
+  
+  /* overflow: hidden;
+  overflow-y: scroll;
+  white-space: nowrap; */
+}
+
+.checkout-button-container {
+  display: flex;
+  width: inherit;
+}
+.checkout-button {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 7px;
+  background-color: hsl(26, 100%, 55%);
+  font-family: 'Kumbh Sans', sans-serif;
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding: 14px 90px;
+  color: white;
+  transition: background-color 0.15s;
+}
+
+.checkout-button:hover {
+  cursor: pointer;
+  background-color:hsl(26, 96%, 62%)
+}
+
+.cart-product-name-and-price {
+  line-height: 20px;
+}
+
+.cart-product-name, .cart-product-price, .cart-total-price {
+  font-size: 0.812rem;
+  margin: 0;
+  color: hsl(219, 9%, 45%);
+}
+
+.cart-total-price {
+  color: black;
+}
+
+.cart-thumbnail {
+  border-radius: 3px;
+  width: 40px;
+}
+
+.cart-delete {
+  width: 11px;
+}
+
+.cart-empty-message {
+  color: hsl(219, 9%, 45%);
+  font-size: 0.812rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* ! Fix the height of cart-body and continue with styling
 
 /* */
+
 .image-avatar {
   width: 40px;
 }
