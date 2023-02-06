@@ -12,9 +12,107 @@ const previousButton = document.querySelector(".previous-button");
 const incrementButton = document.querySelector(".increment-button");
 const decrementButton = document.querySelector(".decrement-button");
 const cartCounter = document.querySelector(".cart-counter");
+const cartContentMain = document.querySelector(".cart-content-main");
+const rightSection = document.querySelector(".right-section");
+const addToCartButton = document.querySelector(".add-to-cart-button");
+const cartMessage = document.querySelector(".cart-message");
+const checkoutButton = document.querySelector(".checkout-button");
+const cartHeader = document.querySelector(".icon-cart-header");
+const cartContainer = document.querySelector(".cart-container");
+const cartNotification = document.querySelector(".cart-notification");
+const cartNotificationCounter = document.querySelector(".cart-notification-counter");
 
+let cartItems = [];
 let prevNextCounter = 1; // We used 1 as the initial value so that it matches up initial value of image-product
 let counter = 0;
+let notificationsCount = 0;
+
+addToCartButton.addEventListener("click", () => {
+  let productImg = thumbnailImages[0].getAttribute("src");
+  let productName = rightSection.querySelector("h1").innerText;
+  let productPrice = Number(rightSection.querySelector(".current-price").innerText.slice(1, 4));
+  let productQuantity = Number(cartCounter.innerText);
+  let productTotal = productPrice * productQuantity;
+
+  cartItems.push({
+    img: productImg,
+    name: productName,
+    price: productPrice,
+    quantity: productQuantity,
+    total: productTotal
+  })
+
+  notificationsCount++;
+  onShowNotification();
+  renderCart();
+})
+  
+function renderCart() {
+  cartContentMain.innerHTML = ""; // Nireset natin ang cartContentMain para hindi mag-multiply ang nirerender
+  // ! Continue with cart functionality
+  if (cartItems.length >= 1) {
+    cartMessage.classList.add("hidden");
+    cartContentMain.classList.remove("hidden");
+    checkoutButton.classList.remove("hidden");
+  } else {
+    cartMessage.classList.remove("hidden");
+    cartContentMain.classList.add("hidden");
+    checkoutButton.classList.add("hidden");
+  }
+
+  cartItems.forEach(cartItem => {
+    const cartContent = document.createElement("div");
+    cartContent.className = "cart-content";
+    cartContentMain.appendChild(cartContent);
+    
+    const productImage = document.createElement("img");
+    productImage.className = "product-image"
+    productImage.setAttribute("src", cartItem.img);
+    cartContent.appendChild(productImage);
+    
+    const productPriceNameContainer = document.createElement("div");
+    cartContent.appendChild(productPriceNameContainer);
+
+    const productName = document.createElement("p");
+    productName.innerText = cartItem.name;
+    productName.className = "product-name";
+    productPriceNameContainer.appendChild(productName);
+
+    const productPrice = document.createElement("p");
+    productPrice.innerText = `$${cartItem.price}.00 x `;
+    productPrice.className = "product-price";
+    productPriceNameContainer.appendChild(productPrice);
+
+    const productQuantity = document.createElement("span");
+    productQuantity.innerText = `${cartItem.quantity} `;
+    productQuantity.className = "product-quantity";
+    productPrice.appendChild(productQuantity);
+
+    const productTotal = document.createElement("strong");
+    productTotal.innerText = `$${cartItem.total}.00`;
+    productTotal.className = "product-total";
+    productPrice.appendChild(productTotal);
+
+    const productDelete = document.createElement("img");
+    productDelete.setAttribute("src", "images/icon-delete.svg");
+    productDelete.className = "product-delete";
+    cartContent.appendChild(productDelete);
+  })
+}
+// * Show Notification
+function onShowNotification() {
+  // The condition is if cartContainer is hidden and notifications count is greater than or equal to 1, then show the notifications
+  // but if cartContainer is not hidden, then cartNotif value is 0 and hide the notification.
+  if (cartContainer.classList[1] == "hidden") {
+    if (notificationsCount >= 1) {
+      cartNotificationCounter.innerText = notificationsCount;
+      cartNotification.classList.remove("hidden");
+    }
+  } else {
+    notificationsCount = 0;
+    cartNotification.classList.add("hidden");
+  }
+}
 
 headerTexts.forEach((headerText, index) => {
   headerText.addEventListener("click", () => {
@@ -138,4 +236,11 @@ function onCounterChange() {
   cartCounter.innerText = counter;
 }
 
+cartHeader.addEventListener("click", () => {
+  cartContainer.classList.toggle("hidden");
+  // Calling the function onShowNotification to test 
+  onShowNotification();
+})
 
+// Di ko kailangan pala eto i-run, wala pa naman ako i-rerender na nakalagay sa cartItems array, so i-call lang natin eto kung meron i.e. clicking the add to cart button.
+// renderCart();  

@@ -35,12 +35,17 @@
     <div class="header-right-section">
       <div class="icon-cart-container">
         <img class="icon-cart-header" src="images/icon-cart-header.svg" alt="">
-        <div class="cart-container">
+        <div class="cart-notification hidden"><span class="cart-notification-counter">3</span></div>
+        <div class="cart-container hidden">
           <div class="cart-text">
             Cart
           </div>
           <div class="cart-body">
-
+            <div class="cart-content-main cart-scroll hidden">
+              
+            </div>
+            <button class="checkout-button hidden">Checkout</button>
+            <div class="cart-message">Your cart is empty</div>
           </div>
         </div>
       </div>
@@ -106,8 +111,8 @@
         durable rubber outer sole, they’ll withstand everything the weather can offer.
       </p>
       <div class="price-off">
-        <strong>$125.00</strong>
-        <span>50%</span>
+        <strong class="current-price">$125.00</strong>
+        <span class="percentage-off">50%</span>
       </div>
       <p class="original-price">$250.00</p>
       <div class="adding-to-cart-container">
