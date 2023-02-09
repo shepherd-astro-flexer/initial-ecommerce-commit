@@ -178,6 +178,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  position: relative;
 }
 
 .product-image {
@@ -191,8 +192,66 @@ h1 {
   color:hsl(219, 9%, 45%);
 }
 
+.cart-popup {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(169, 169, 169, 0.31);
+}
+
+.cart-popup-container {
+  background-color: darkgrey;
+  position: absolute;
+  color: black;
+  font-size: 0.812rem;
+  padding: 4px 10px;;
+  border-radius: 4px;
+  margin-left: 12px;
+}
+
+.confirm-buttons-container button {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 0.812rem;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background-color:hsl(26, 96%, 62%);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.confirm-buttons-container button:hover {
+  cursor: pointer;
+  color: hsl(26, 96%, 62%);
+  background-color: white;
+}
+
+.yes-button{
+  margin-right: 5px;
+}
+
+.confirm-buttons-container {
+
+}
+
+
+.confirm-buttons-container button {
+
+}
+
 .product-delete {
   width: 10px;
+  filter: invert(85%) sepia(8%) saturate(342%) hue-rotate(183deg) brightness(93%) contrast(96%);
+  transition: filter 0.15s;
+}
+
+.product-delete:hover {
+  cursor: pointer;
+  filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(183deg) brightness(97%) contrast(103%);
 }
 
 .checkout-button {

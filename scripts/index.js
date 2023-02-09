@@ -28,18 +28,20 @@ let counter = 0;
 let notificationsCount = 0;
 
 addToCartButton.addEventListener("click", () => {
-  let productImg = thumbnailImages[0].getAttribute("src");
-  let productName = rightSection.querySelector("h1").innerText;
-  let productPrice = Number(rightSection.querySelector(".current-price").innerText.slice(1, 4));
-  let productQuantity = Number(cartCounter.innerText);
-  let productTotal = productPrice * productQuantity;
+  const productImg = thumbnailImages[0].getAttribute("src");
+  const productName = rightSection.querySelector("h1").innerText;
+  const productPrice = Number(rightSection.querySelector(".current-price").innerText.slice(1, 4));
+  const productQuantity = Number(cartCounter.innerText);
+  const productTotal = productPrice * productQuantity;
+  const id = new Date().getTime();
 
   cartItems.push({
     img: productImg,
     name: productName,
     price: productPrice,
     quantity: productQuantity,
-    total: productTotal
+    total: productTotal,
+    id: id
   })
 
   notificationsCount++;
@@ -63,6 +65,7 @@ function renderCart() {
   cartItems.forEach(cartItem => {
     const cartContent = document.createElement("div");
     cartContent.className = "cart-content";
+    cartContent.id = cartItem.id;
     cartContentMain.appendChild(cartContent);
     
     const productImage = document.createElement("img");
@@ -95,9 +98,61 @@ function renderCart() {
 
     const productDelete = document.createElement("img");
     productDelete.setAttribute("src", "images/icon-delete.svg");
+    productDelete.addEventListener("click", () => {
+      cartPopup.classList.remove("hidden");
+    })
     productDelete.className = "product-delete";
     cartContent.appendChild(productDelete);
+
+    const cartPopup = document.createElement("div");
+    cartPopup.className = "cart-popup hidden";
+    cartContent.appendChild(cartPopup);
+
+    const cartPopupContainer = document.createElement("div");
+    cartPopupContainer.className = "cart-popup-container";
+    cartPopup.appendChild(cartPopupContainer);
+
+    const confirmMessage = document.createElement("div");
+    confirmMessage.innerText = "Delete item from cart?";
+    cartPopupContainer.appendChild(confirmMessage);
+
+    const confirmButtonsContainer = document.createElement("div");
+    confirmButtonsContainer.className = "confirm-buttons-container";
+    cartPopupContainer.appendChild(confirmButtonsContainer);
+
+    const yesButton = document.createElement("button");
+    yesButton.innerText = "Yes";
+    yesButton.className = "yes-button";
+    yesButton.addEventListener("click", onDelete(cartItem));
+    yesButton.id = cartItem.id;
+    confirmButtonsContainer.appendChild(yesButton);
+
+    const noButton = document.createElement("button");
+    noButton.innerText = "No";
+    noButton.addEventListener("click", () => {
+      cartPopup.classList.add("hidden");
+    })
+    confirmButtonsContainer.appendChild(noButton);
+    
   })
+}
+
+function deleteItem(itemId) {
+  cartItems = cartItems.filter(cartItem => {
+    if (cartItem.id == itemId) {
+      return false;
+    } else {
+      return true;
+    }
+  })
+}
+
+function onDelete(itemToDelete) {
+  return function() { // Parang sinasabi natin, return the result of this function.
+    deleteItem(itemToDelete.id); // magrurun ang code sa loob ng function
+    renderCart(); // kung wala naman tayong gagawin sa result sa loob ng returned function, HINDI na kailangan mag-return
+    console.log(itemToDelete)
+  }
 }
 // * Show Notification
 function onShowNotification() {
@@ -242,5 +297,26 @@ cartHeader.addEventListener("click", () => {
   onShowNotification();
 })
 
+// ! Fix the styling of lightbox
+
 // Di ko kailangan pala eto i-run, wala pa naman ako i-rerender na nakalagay sa cartItems array, so i-call lang natin eto kung meron i.e. clicking the add to cart button.
 // renderCart();  
+
+
+
+// ! Sample closures
+
+let contura = 0; // kung merong gagamit pa ng value na eto then mas magandang ilagay sa global scope, pero kung wala naman, sa loob na lang ng function mismo i DECLARE ang variable, and if you want the data to persist, then use a closure
+function sampleCounter() {
+  
+return () => {
+  contura++
+  return () => {
+    contura++
+    return contura;
+  };
+}
+  
+}
+
+const count = sampleCounter();
